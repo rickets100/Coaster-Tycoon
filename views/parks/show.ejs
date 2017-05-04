@@ -10,8 +10,27 @@
   </div>
 
   <table class="table">
-    <!-- list of parks goes here -->
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Capacity</th>
+        <th>Popularity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% rides.forEach(ride => { %>
+        <tr>
+          <td>
+            <a href="/rides/<%= ride.id %>"><%= ride.name %></a>
+          </td>
+          <td><%= ride.capacity %></td>
+          <td><%= ride.popularity %></td>
+        </tr>
+      <% }) %>
+    </tbody>
   </table>
+
+  <br>
 
   <ul class="list-inline" style="margin-left: 1rem;">
     <li>

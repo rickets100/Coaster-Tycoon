@@ -1,3 +1,4 @@
+const Park = require('../models/parks')
 const Ride = require('../models/rides')
 
 function index (req, res, next) {
@@ -6,11 +7,16 @@ function index (req, res, next) {
 
 function show (req, res, next) {
   const id = req.params.id
-  Ride.findById(id).then(ride => res.render('rides/show', { ride }))
+  Ride.findById(id).then(ride => {
+    Park.findById(ride.park_id).then(park => {
+      res.render('rides/show', { ride, park })
+    })
+  })
 }
 
 function newForm (req, res, next) {
-  res.render('rides/new', { ride: {} })
+  const ride = {}
+  Park.all().then(parks => res.render('rides/new', { ride, parks }))
 }
 
 function create (req, res, next) {
@@ -19,7 +25,9 @@ function create (req, res, next) {
 
 function editForm (req, res, next) {
   const id = req.params.id
-  Ride.findById(id).then(ride => res.render('rides/edit', { ride }))
+  Park.all().then(parks => {
+    Ride.findById(id).then(ride => res.render('rides/edit', { ride, parks }))
+  })
 }
 
 function update (req, res, next) {

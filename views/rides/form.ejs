@@ -26,12 +26,16 @@
         value="<%= ride.popularity %>">
     </div>
     <div class="col-xs-3 form-group">
-      <label for="park_id">Park ID</label>
-      <input type="number"
-        class="form-control"
-        id="park_id"
-        name="park_id"
-        value="<%= ride.park_id %>">
+      <label for="parks">Parks</label>
+      <select class="form-control" name="park_id">
+        <option value="">-- Choose a Park --</option>
+        <% parks.forEach(park => { %>
+          <option value="<%= park.id %>"
+            <% if (park.id == ride.park_id) { %>selected<% } %>>
+            <%= park.name %>
+          </option>
+        <% }) %>
+      </select>
     </div>
   </div>
 
