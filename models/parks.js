@@ -1,15 +1,7 @@
-const db = require('../db')
+const Resource = require('./resource')('parks')
 
-class Park {
+class Park extends Resource {
   constructor () {}
-
-  static all () {
-    return db('parks')
-  }
-
-  static findById (id) {
-    return db('parks').where({ id }).first()
-  }
 }
 
 module.exports = Park

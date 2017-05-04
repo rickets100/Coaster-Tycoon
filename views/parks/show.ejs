@@ -12,4 +12,15 @@
   <table class="table">
     <!-- list of parks goes here -->
   </table>
+
+  <ul class="list-inline" style="margin-left: 1rem;">
+    <li>
+      <a href="/parks/<%= park.id %>/edit" class="btn btn-primary">Edit</a>
+    </li>
+    <li>
+      <form action="/parks/<%= park.id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger" type="submit" name="button">Delete</button>
+      </form>
+    </li>
+  </ul>
 </section>
