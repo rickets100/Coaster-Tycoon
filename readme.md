@@ -57,6 +57,8 @@ Create your own model and controller for the **rides** resource and make similar
 
 - [ ] Add all necessary views
 
+> **Note:** For now, on the new form allow for a field where you would enter the ID of the associated park. We will update this to be more dynamic moving forward.
+
 ##### Step 2B (Optional)
 
 These models are _pretty_ similar at this point. What if created a new class called `Resource` that had all the basic CRUD actions on it and our individual models extended from that?
@@ -68,6 +70,7 @@ These models are _pretty_ similar at this point. What if created a new class cal
 We're going to now combine the two models we have created in order to add new features:
 
 * Update the parks destroy handler so that we delete rides associated with that park when we delete the park. You will likely need to use `Promise.all()` and/or the Knex.js [whereIn](http://knexjs.org/#Builder-whereIn) method. Alternatively, you can look into the [CASCADE](https://www.postgresql.org/docs/8.2/static/ddl-constraints.html) constraint.
+* Update the rides new and edit pages so that the parks are dynamically pulled from the database.
 * On the parks index page we want to show the number of rides that park has.
 * On the parks show page, we want to list all the rides at the park with a link to each ones show page.
 * On the ride show page we want to provide a link back to the park where it is located.
@@ -75,6 +78,8 @@ We're going to now combine the two models we have created in order to add new fe
 As our views get more complicated, we want our logic for how to render the view to go into the controller.
 
 - [ ] Update the parks `destroy` handler so that it deletes all dependent rides for the given park.
+
+- [ ] Update the rides `new` and `edit` handler so that it pulls a list of parks from the database.
 
 - [ ] Update the parks `index` handler and view to also show the number of rides each park listing. You should not need to update the model.
 
