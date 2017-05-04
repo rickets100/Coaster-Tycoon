@@ -1,0 +1,39 @@
+<form action="/rides/<%= ride.id ? `${ride.id}?_method=PUT` : '' %>"
+  method='POST' class="well">
+  <div class="row">
+    <div class="col-xs-3 form-group">
+      <label for="name">Name</label>
+      <input type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        value="<%= ride.name %>">
+    </div>
+    <div class="col-xs-3 form-group">
+      <label for="capacity">Capacity</label>
+      <input type="number"
+        class="form-control"
+        id="capacity"
+        name="capacity"
+        value="<%= ride.capacity %>">
+    </div>
+    <div class="col-xs-3 form-group">
+      <label for="popularity">Popularity</label>
+      <input type="number" min="0" max="5"
+        class="form-control"
+        id="popularity"
+        name="popularity"
+        value="<%= ride.popularity %>">
+    </div>
+    <div class="col-xs-3 form-group">
+      <label for="park_id">Park ID</label>
+      <input type="number"
+        class="form-control"
+        id="park_id"
+        name="park_id"
+        value="<%= ride.park_id %>">
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

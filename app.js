@@ -5,8 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override')
+
 var index = require('./routes/index');
 var parks = require('./routes/parks');
+var rides = require('./routes/rides');
 
 var app = express();
 
@@ -26,6 +28,7 @@ app.use(methodOverride('_method'))
 
 app.use('/', index);
 app.use('/parks', parks);
+app.use('/rides', rides);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

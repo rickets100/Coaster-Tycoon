@@ -1,0 +1,26 @@
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h2><%= ride.name %></h2>
+  </div>
+  <div class="panel-body">
+    <p>
+      <strong>Capacity:</strong>
+      <%= ride.capacity %>
+    </p>
+    <p>
+      <strong>Popularity:</strong>
+      <%= ride.popularity %>
+    </p>
+  </div>
+
+  <ul class="list-inline" style="margin-left: 1rem;">
+    <li>
+      <a href="/rides/<%= ride.id %>/edit" class="btn btn-primary">Edit</a>
+    </li>
+    <li>
+      <form action="/rides/<%= ride.id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger" type="submit" name="button">Delete</button>
+      </form>
+    </li>
+  </ul>
+</section>
