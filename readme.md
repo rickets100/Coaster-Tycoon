@@ -37,9 +37,9 @@ Begin by finishing basic CRUD routes for the park resource. Add relevant view wh
 - [ ] Add route handlers for all CRUD actions to the controller
   ```js
   function destroy () {} // deletes and redirects to /parks
-  function new () {} // renders a form to create a new park
+  function newForm () {} // renders a form to create a new park
   function create () {} // creates and redirects to /parks/:id
-  function edit () {} // renders a populated form to edit an existing park
+  function editForm () {} // renders a populated form to edit an existing park
   function update () {} // updates and redirects to /parks/:id
   ```
 
@@ -69,20 +69,21 @@ These models are _pretty_ similar at this point. What if created a new class cal
 
 We're going to now combine the two models we have created in order to add new features:
 
-* Update the parks destroy handler so that we delete rides associated with that park when we delete the park. You will likely need to use `Promise.all()` and/or the Knex.js [whereIn](http://knexjs.org/#Builder-whereIn) method. Alternatively, you can look into the [CASCADE](https://www.postgresql.org/docs/8.2/static/ddl-constraints.html) constraint.
-* Update the rides new and edit pages so that the parks are dynamically pulled from the database.
+* On the ride show page we want to provide a link back to the park where it is located.
 * On the parks index page we want to show the number of rides that park has.
 * On the parks show page, we want to list all the rides at the park with a link to each ones show page.
-* On the ride show page we want to provide a link back to the park where it is located.
+* Update the parks destroy handler so that we delete rides associated with that park when we delete the park. You will likely need to use `Promise.all()` and/or the Knex.js [whereIn](http://knexjs.org/#Builder-whereIn) method. Alternatively, you can look into the [CASCADE](https://www.postgresql.org/docs/8.2/static/ddl-constraints.html) constraint.
+* Update the rides new and edit pages so that the parks are dynamically pulled from the database.
+
 
 As our views get more complicated, we want our logic for how to render the view to go into the controller.
 
-- [ ] Update the parks `destroy` handler so that it deletes all dependent rides for the given park.
-
-- [ ] Update the rides `new` and `edit` handler so that it pulls a list of parks from the database.
+- [ ] Update the rides `show` handler and view to provide a link to the park the ride is a part of with its name.
 
 - [ ] Update the parks `index` handler and view to also show the number of rides each park listing. You should not need to update the model.
 
 - [ ] Update the parks `show` handler and view to show all the rides for that individual park. Each one should link to a ride show page.
 
-- [ ] Update the rides `show` handler and view to provide a link to the park the ride is a part of.
+- [ ] Update the parks `destroy` handler so that it deletes all dependent rides for the given park.
+
+- [ ] Update the rides `new` and `edit` handler so that it pulls a list of parks from the database.
