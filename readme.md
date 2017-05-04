@@ -1,9 +1,9 @@
-## gCoaster Tycoon
+# gCoaster Tycoon
 
 This is a project intended to give students an idea of MVC architecture using Node, Express, Knex, and ES6 Classes.
 
 
-### Getting Started
+## Getting Started
 
 1. Fork & clone this repository
 1. `yarn` or `npm install`
@@ -13,7 +13,7 @@ This is a project intended to give students an idea of MVC architecture using No
 1. To run the server with nodemon, run `npm run dev`
 
 
-### Existing Code
+## Existing Code
 
 Currently two routes exist: `/parks` and `/parks/:id`. Look in the `models/`, `controllers/`, and `routes/` folders and answer the following guiding questions:
 
@@ -21,9 +21,9 @@ Currently two routes exist: `/parks` and `/parks/:id`. Look in the `models/`, `c
 * What type of object does `Park.all()` return?
 * What does `ctrl` represent in the `routes/parks.js` file?
 
-### Task List
+## Task List
 
-##### Step 1
+### Step 1
 
 Begin by finishing basic CRUD routes for the park resource. Add relevant view where necessary.
 
@@ -47,7 +47,7 @@ Begin by finishing basic CRUD routes for the park resource. Add relevant view wh
 
 > **Note:** You will not be able to currently delete parks that have any rides associated with them because of the foreign key constraint. For now, ignore this bug.
 
-##### Step 2
+### Step 2
 
 Create your own model and controller for the **rides** resource and make similar methods and views. The code should be very similar.  :)
 
@@ -59,13 +59,13 @@ Create your own model and controller for the **rides** resource and make similar
 
 > **Note:** For now, on the new form allow for a field where you would enter the ID of the associated park. We will update this to be more dynamic moving forward.
 
-##### Step 2B (Optional)
+### Step 2B (Optional)
 
 These models are _pretty_ similar at this point. What if created a new class called `Resource` that had all the basic CRUD actions on it and our individual models extended from that?
 
 - [ ] Create a `Resource` class that is used by our other models
 
-##### Step 3
+### Step 3
 
 We're going to now combine the two models we have created in order to add new features:
 
