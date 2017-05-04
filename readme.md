@@ -45,6 +45,8 @@ Begin by finishing basic CRUD routes for the park resource. Add relevant view wh
 
 - [ ] Add all necessary views
 
+> **Note:** You will not be able to currently delete parks that have any rides associated with them because of the foreign key constraint. For now, ignore this bug.
+
 ##### Step 2
 
 Create your own model and controller for the **rides** resource and make similar methods and views. The code should be very similar.  :)
@@ -63,9 +65,16 @@ These models are _pretty_ similar at this point. What if created a new class cal
 
 ##### Step 3
 
-On the parks index page we want to show the number of rides that park has. On the parks show page, we want to list all the rides at the park with a link to each ones show page. Finally, on the ride show page we want to provide a link back to the park where it is located.
+We're going to now combine the two models we have created in order to add new features:
+
+* Update the parks destroy handler so that we delete rides associated with that park when we delete the park. You will likely need to use `Promise.all()` and/or the Knex.js [whereIn](http://knexjs.org/#Builder-whereIn) method. Alternatively, you can look into the [CASCADE](https://www.postgresql.org/docs/8.2/static/ddl-constraints.html) constraint.
+* On the parks index page we want to show the number of rides that park has.
+* On the parks show page, we want to list all the rides at the park with a link to each ones show page.
+* On the ride show page we want to provide a link back to the park where it is located.
 
 As our views get more complicated, we want our logic for how to render the view to go into the controller.
+
+- [ ] Update the parks `destroy` handler so that it deletes all dependent rides for the given park.
 
 - [ ] Update the parks `index` handler and view to also show the number of rides each park listing. You should not need to update the model.
 
