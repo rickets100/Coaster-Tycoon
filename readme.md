@@ -17,7 +17,7 @@ This is a project intended to give students an idea of MVC architecture using No
 
 Currently two routes exist: `/parks` and `/parks/:id`. Look in the `models/`, `controllers/`, and `routes/` folders and answer the following guiding questions:
 
-* That does the `static` keyword do?
+* What does the `static` keyword do?
 * What type of object does `Park.all()` return?
 * What does `ctrl` represent in the `routes/parks.js` file?
 
