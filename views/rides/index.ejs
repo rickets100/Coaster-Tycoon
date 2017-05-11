@@ -1,0 +1,7 @@
+<section class="list-group">
+  <% rides.forEach(ride => { %>
+    <a href="/rides/<%= ride.id %>" class="list-group-item">
+      <%= ride.name %>
+    </a>
+  <% }) %>
+</section>

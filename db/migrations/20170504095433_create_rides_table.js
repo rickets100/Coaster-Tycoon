@@ -5,7 +5,7 @@ exports.up = (knex) => {
     table.integer('capacity')
     table.integer('popularity')
     table.integer('park_id')
-    table.foreign('park_id').references('parks.id')
+    table.foreign('park_id').references('parks.id').onDelete('CASCADE')
     table.timestamps(true, true)
   })
 }

@@ -1,24 +1,26 @@
 <section class="panel panel-default">
   <div class="panel-heading">
-    <h2><%= park.name %></h2>
+    <h2><%= ride.name %></h2>
   </div>
   <div class="panel-body">
     <p>
-      <strong>Location:</strong>
-      <%= park.city %>, <%= park.state %>
+      <strong>Capacity:</strong>
+      <%= ride.capacity %>
     </p>
+    <p>
+      <strong>Popularity:</strong>
+      <%= ride.popularity %>
+    </p>
+
   </div>
 
-  <table class="table">
-    <!-- list of parks goes here -->
-  </table>
 </section>
 <ul class="list-inline" style="margin-left: 1rem;">
   <li>
-    <a href="/parks/<%= park.id %>/edit" class="btn btn-primary">Edit</a>
+    <a href="/rides/<%= ride.id %>/edit" class="btn btn-primary">Edit</a>
   </li>
   <li>
-    <form action="/parks/<%= park.id %>?_method=DELETE" method="POST">
+    <form action="/rides/<%= ride.id %>?_method=DELETE" method="POST">
       <button class="btn btn-danger" type="submit" name="button">Delete</button>
     </form>
   </li>

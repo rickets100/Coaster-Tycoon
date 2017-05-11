@@ -1,12 +1,55 @@
 const Park = require('../models/parks')
 
 function index (req, res, next) {
-  Park.all().then(parks => res.render('parks/index', { parks }))
+  Park.all()
+  .then(parks => res.render('parks/index', { parks }))
 }
 
-function show (req, res, next) {
+function show(req, res, next) {
   const id = req.params.id
-  Park.findById(id).then(park => res.render('parks/show', { park }))
+  Park.findById(id)
+  .then(park => res.render('parks/show', { park }))
 }
 
-module.exports = { index, show }
+function newForm(req, res, next) {
+  res.render('parks/new')
+}
+
+function editForm(req, res, next) {
+  const id = req.params.id
+  Park.findById(id).then(park => res.render('parks/edit', {park}))
+}
+
+function create(req, res, next) {
+  const body = {
+    name: req.body.name,
+    city: req.body.city,
+    state: req.body.state
+  }
+
+  Park.create(body)
+  .then(park => res.redirect('/parks'))
+}
+
+function update(req, res, next) {
+  console.log('req.body is', req.body)
+  const id = req.params.id
+
+  const body = {
+    id: req.params.id,
+    name: req.body.name,
+    city: req.body.city,
+    state: req.body.state
+  }
+
+  Park.update(body)
+  .then(park => res.redirect(`/parks/${id}`))
+}
+
+function destroy(req, res, next) {
+  const id = req.params.id
+  Park.destroy(id)
+  .then(park => res.redirect('/parks'))
+}
+
+module.exports = { index, show, newForm, editForm, create, update, destroy }
