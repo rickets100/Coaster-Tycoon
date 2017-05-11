@@ -9,7 +9,7 @@ This is a project intended to give students an idea of MVC architecture using No
 1. `yarn` or `npm install`
 1. `createdb coaster_tycoon_dev`
 1. `npm run knex migrate:latest`
-1. `npm run knex migrate:seed`
+1. `npm run knex seed:run`
 1. To run the server with nodemon, run `npm run dev`
 
 
