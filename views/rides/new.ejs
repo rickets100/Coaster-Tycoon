@@ -4,7 +4,7 @@
  <form action="/rides"
 method='POST' class="well">
 <div class="row">
- <div class="col-xs-4 form-group">
+ <div class="col-xs-3 form-group">
    <label for="name">Name</label>
    <input type="text"
      class="form-control"
@@ -12,7 +12,7 @@ method='POST' class="well">
      name="name"
      value="">
  </div>
- <div class="col-xs-4 form-group">
+ <div class="col-xs-3 form-group">
    <label for="capacity">Capacity</label>
    <input type="number"
      class="form-control"
@@ -20,7 +20,7 @@ method='POST' class="well">
      name="capacity"
      value="">
  </div>
- <div class="col-xs-4 form-group">
+ <div class="col-xs-3 form-group">
    <label for="popularity">Popularity</label>
    <input type="number"
      class="form-control"
@@ -28,6 +28,19 @@ method='POST' class="well">
      name="popularity"
      value="">
  </div>
+ <div class="col-xs-3 form-group">
+   <label for="rides">Parks</label>
+   <select class="form-control" name="park_id">
+     <option value="" selected>-- Choose a Park --</option>
+     <% parks.forEach(park => { %>
+       <option value="<%= park.id %>">
+         <%= park.name %>
+       </option>
+       <% }) %>
+     </select>
+   </div>
+ </div>
+
 </div>
 
 <button type="submit" class="btn btn-primary">Submit</button>

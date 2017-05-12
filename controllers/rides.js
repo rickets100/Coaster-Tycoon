@@ -23,7 +23,10 @@ function show(req, res, next) {
 }
 
 function newForm(req, res, next) {
-  res.render('rides/new')
+  Park.all()
+  .then(parks => {
+    res.render('rides/new', { parks })
+  })
 }
 
 function editForm(req, res, next) {
@@ -39,11 +42,13 @@ function editForm(req, res, next) {
 }
 
 function create(req, res, next) {
+  // console.log('in create: req.body is ', req.body);
+
   const body = {
     name: req.body.name,
     capacity: req.body.capacity,
-    popularity: req.body.popularity
-
+    popularity: req.body.popularity,
+    park_id: req.body.park_id
   }
 
   Ride.create(body)
@@ -51,13 +56,16 @@ function create(req, res, next) {
 }
 
 function update(req, res, next) {
+  const parkId = req.body.park_id
   const id = req.params.id
   const body = {
     id: req.params.id,
     name: req.body.name,
     capacity: req.body.capacity,
-    popularity: req.body.popularity
+    popularity: req.body.popularity,
+    park_id: parkId
   }
+  console.log('body is ', body)
 
   Ride.update(body)
   .then(ride => res.redirect(`/rides/${id}`))
