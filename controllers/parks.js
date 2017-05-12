@@ -4,7 +4,7 @@ const Ride = require('../models/rides')
 function index (req, res, next) {
   Park.all()
   .select('parks.name', 'parks.id')
-  .innerJoin('rides', 'parks.id', 'rides.park_id')
+  .leftOuterJoin('rides', 'parks.id', 'rides.park_id')
   .groupBy('parks.name', 'rides.park_id', 'parks.id')
   .count('park_id as rideCount')
   .then(parks => {
@@ -37,7 +37,10 @@ function create(req, res, next) {
   }
 
   Park.create(body)
-  .then(park => res.redirect('/parks'))
+  .then(park => {
+    res.redirect('/parks')
+  })
+
 }
 
 function update(req, res, next) {

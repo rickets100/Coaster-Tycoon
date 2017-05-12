@@ -17,7 +17,7 @@ function ResourceFactory (table) {
     }
 
     static create(body) {
-      return db(table).insert(body)
+      return db(table).insert(body).returning('*')
     }
 
     static update(body) {
