@@ -35,15 +35,12 @@ function editForm(req, res, next) {
   .then(ride => {
     Park.all()
     .then(parks => {
-      console.log('hey hey hey', parks)
       res.render('rides/edit', { ride, parks })
     })
   })
 }
 
 function create(req, res, next) {
-  // console.log('in create: req.body is ', req.body);
-
   const body = {
     name: req.body.name,
     capacity: req.body.capacity,
@@ -65,7 +62,6 @@ function update(req, res, next) {
     popularity: req.body.popularity,
     park_id: parkId
   }
-  console.log('body is ', body)
 
   Ride.update(body)
   .then(ride => res.redirect(`/rides/${id}`))

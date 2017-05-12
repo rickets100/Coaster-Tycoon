@@ -8,7 +8,7 @@ function index (req, res, next) {
   .groupBy('parks.name', 'rides.park_id', 'parks.id')
   .count('park_id as rideCount')
   .then(parks => {
-      res.render('parks/index', { parks })
+    res.render('parks/index', { parks })
   })
 }
 
@@ -41,9 +41,7 @@ function create(req, res, next) {
 }
 
 function update(req, res, next) {
-  console.log('req.body is', req.body)
   const id = req.params.id
-
   const body = {
     id: req.params.id,
     name: req.body.name,
