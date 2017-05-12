@@ -29,15 +29,18 @@
           value="<%= ride.popularity %>">
         </div>
         <div class="col-xs-3 form-group">
-          <label for="rides">Rides</label>
-          <select class="form-control" name="ride_id">
-            <option value="">-- Choose a Ride --</option>
-            <option value="3">Kings Dominion</option>
-            <option value="4">Wild Waves</option>
-          </select>
+          <label for="rides">Parks</label>
+          <select class="form-control" name="park_id">
+            <option value="" selected>-- Choose a Park --</option>
+            <% parks.forEach(park => { %>
+              <option value="<%= park.id %>">
+                <%= park.name %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
         </div>
-      </div>
-       <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </fieldset>
-</section>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </fieldset>
+  </section>

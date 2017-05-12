@@ -1,7 +1,8 @@
 <section class="list-group">
   <% parks.forEach(park => { %>
     <a href="/parks/<%= park.id %>" class="list-group-item">
+      <span class="badge"><%= park.rideCount %></span>
       <%= park.name %>
     </a>
-  <% }) %>
-</section>
+    <% }) %>
+  </section>

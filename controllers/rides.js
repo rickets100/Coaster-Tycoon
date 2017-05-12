@@ -1,4 +1,5 @@
 const Ride = require('../models/rides')
+const Park = require('../models/parks')
 
 function index (req, res, next) {
   Ride.all()
@@ -7,8 +8,18 @@ function index (req, res, next) {
 
 function show(req, res, next) {
   const id = req.params.id
+
   Ride.findById(id)
-  .then(ride => res.render('rides/show', { ride }))
+  .where('id', id)
+  .select('*')
+  .then(ride => {
+    let rideParkId = ride.park_id
+    Park.findById(rideParkId)
+    .select('*')
+    .then(park => {
+      res.render('rides/show', { park, ride })
+    })
+  })
 }
 
 function newForm(req, res, next) {
@@ -17,7 +28,14 @@ function newForm(req, res, next) {
 
 function editForm(req, res, next) {
   const id = req.params.id
-  Ride.findById(id).then(ride => res.render('rides/edit', { ride }))
+  Ride.findById(id)
+  .then(ride => {
+    Park.all()
+    .then(parks => {
+      console.log('hey hey hey', parks)
+      res.render('rides/edit', { ride, parks })
+    })
+  })
 }
 
 function create(req, res, next) {

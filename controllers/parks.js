@@ -3,7 +3,13 @@ const Ride = require('../models/rides')
 
 function index (req, res, next) {
   Park.all()
-  .then(parks => res.render('parks/index', { parks }))
+  .select('parks.name', 'parks.id')
+  .innerJoin('rides', 'parks.id', 'rides.park_id')
+  .groupBy('parks.name', 'rides.park_id', 'parks.id')
+  .count('park_id as rideCount')
+  .then(parks => {
+      res.render('parks/index', { parks })
+  })
 }
 
 function show(req, res, next) {
