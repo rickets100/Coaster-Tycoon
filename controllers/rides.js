@@ -33,9 +33,7 @@ function create(req, res, next) {
 }
 
 function update(req, res, next) {
-  console.log('req.body is', req.body)
   const id = req.params.id
-
   const body = {
     id: req.params.id,
     name: req.body.name,
@@ -48,7 +46,6 @@ function update(req, res, next) {
 }
 
 function destroy(req, res, next) {
-  console.log('in the rides destroy', req.params.id)
   const id = req.params.id
   Ride.destroy(id)
   .then(ride => res.redirect('/rides'))

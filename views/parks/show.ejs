@@ -8,18 +8,35 @@
       <%= park.city %>, <%= park.state %>
     </p>
   </div>
-
   <table class="table">
-    <!-- list of parks goes here -->
-  </table>
-</section>
-<ul class="list-inline" style="margin-left: 1rem;">
-  <li>
-    <a href="/parks/<%= park.id %>/edit" class="btn btn-primary">Edit</a>
-  </li>
-  <li>
-    <form action="/parks/<%= park.id %>?_method=DELETE" method="POST">
-      <button class="btn btn-danger" type="submit" name="button">Delete</button>
-    </form>
-  </li>
-</ul>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Capacity</th>
+        <th>Popularity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% rides.forEach(function(ride){ %>
+        <tr>
+          <td>
+            <a href="/rides/<%= ride.id %>"><%= ride.name %></a>
+          </td>
+          <td><%= ride.capacity %></td>
+          <td><%= ride.popularity %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <br>
+  </section>
+  <ul class="list-inline" style="margin-left: 1rem;">
+    <li>
+      <a href="/parks/<%= park.id %>/edit" class="btn btn-primary">Edit</a>
+    </li>
+    <li>
+      <form action="/parks/<%= park.id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger" type="submit" name="button">Delete</button>
+      </form>
+    </li>
+  </ul>
